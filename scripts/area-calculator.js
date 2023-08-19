@@ -22,23 +22,49 @@ function calculatorTriangleArea(){
     heightField.value = '';
 }  
 
+// function calculatorRectangleArea(){
+//     const widthField = document.getElementById('rectangle-width');
+//     const widthValueText = widthField.value;
+//     const width = parseFloat(widthValueText);
+//     console.log(width);
+    
+//     const lengthField = document.getElementById('rectangle-length');
+//     const lengthValueText = lengthField.value;
+//     const length = parseFloat(lengthValueText);
+//     console.log(length);
+
+//     const rectangleArea = width * length;
+//     console.log(rectangleArea);
+    
+//     const areaSpan = document.getElementById('rectangle-area');
+//     areaSpan.innerText = rectangleArea;
+
+//     widthField.value = '';
+//     lengthField.value = '';
+// }
+
+
+// reusable function ...> reduce duplicate code..
 function calculatorRectangleArea(){
-    const widthField = document.getElementById('rectangle-width');
-    const widthValueText = widthField.value;
-    const width = parseFloat(widthValueText);
-    console.log(width);
-    
-    const lengthField = document.getElementById('rectangle-length');
-    const lengthValueText = lengthField.value;
-    const length = parseFloat(lengthValueText);
-    console.log(length);
+    const width = getInputValue('rectangle-width');
+    // console.log(width);
 
-    const rectangleArea = width * length;
-    console.log(rectangleArea);
-    
-    const areaSpan = document.getElementById('rectangle-area');
-    areaSpan.innerText = rectangleArea;
+    const length = getInputValue('rectangle-length');
+    // console.log(length);
 
-    widthField.value = '';
-    lengthField.value = '';
+    const area = width * length;
+   setElementInnerText('rectangle-area', area);
+}
+
+function getInputValue(fieldId){
+    const inputField = document.getElementById(fieldId);
+    const inputValueText = inputField.value;
+    const value = parseFloat(inputValueText);
+    return value;
+}
+
+// set inner text 
+function setElementInnerText(elementId, area){
+    const element = document.getElementById(elementId);
+    element.innerText = area;
 }
